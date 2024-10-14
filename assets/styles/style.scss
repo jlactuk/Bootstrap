@@ -1,0 +1,147 @@
+@use 'sass:color';
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+$color-orange : #FF823D;
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .nav-item-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+main {
+    background-color: #F5F5F5;
+
+    .row {
+        margin: 0;
+    }
+
+    .banner {
+        background-image: url('../images/cover.png');
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: 50% 100%;
+        position: relative;
+        &::before {
+            content: "Самый популярный";
+            font-size: .6em;
+            background-color: #fff;
+            color: #383838;
+            opacity: .8;
+            padding: 0 15px;
+            border-radius: 8px;
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            cursor: pointer;
+        }
+
+        .tags {
+            p {
+                background-color: #F3F3F3;
+                padding: 5px 10px;
+                margin: 0;
+            }
+        }
+    }
+ 
+    .feedback {
+        .feedback-title {
+            &::after {
+                content: "182";
+                font-size: .7em;
+                display: inline-block;
+                text-orientation: upright;
+                vertical-align: super;
+            }
+        }
+
+        .cards {
+            overflow-y: hidden;
+            flex-wrap: nowrap;
+
+            & > article {
+                flex-basis: 33%;
+            }
+        }
+    }
+
+    .wallet {
+        width: fit-content;
+
+        .text-orange {
+            color: $color-orange;
+        }
+    }
+}
+
+.bg-orange {
+    background: $color-orange;
+    
+    &:hover {
+        background: darken($color-orange, 20%);
+    }
+}
+
+@media screen  and  (max-width: 400px) {
+    .main-content {
+        width: 100%;
+
+        .banner {
+            background-position: 0 0;
+            background-size: 100vw 50%;
+            background: linear-gradient(to bottom, transparent 0%, white 30%), url('../images/BannerMobile.png');
+            background-repeat: no-repeat;
+            text-align: center;
+    
+            &::before {
+                left: 1em;
+                right: inherit;
+            }
+
+            h1 {
+                padding-top: 100%;
+            }
+    
+            .tags,
+            .description {
+                justify-content: center;
+                width: 100% !important;
+            }
+        }
+
+        .feedback {
+            padding: 10px;
+            .feedback-title {
+            padding: 0 10px;
+                &::after {
+                    content: "1/182";
+                    margin-top: 10px;
+                    display: block;
+                }
+            }
+
+            .cards {
+                overflow-y: hidden;
+                flex-wrap: nowrap;
+                & > article {
+                    flex-basis: 70%;
+                }
+            }
+        } 
+
+        .wallet {
+            width: 100%;
+
+            button {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
